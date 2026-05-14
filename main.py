@@ -406,7 +406,7 @@ def view_infrastructure():
     infra = conn.execute("SELECT * FROM infrastructure ORDER BY branch, room_number").fetchall()
     conn.close()
     return render_template('infrastructure_public.html', infra=infra)
-
-if __name__ == '__main__':
+    
+    if __name__ == '__main__':
     init_db()
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
